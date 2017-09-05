@@ -2,6 +2,6 @@
 	<h3 [style.color]="'White'">Admin Portal</h3>
 	<span class="portal-spacer"></span>
 	<span [hidden]="!loggedIn"><a md-button>View Book List</a></span>
-	<span [hidden]="!loggedIn"><a md-button>Add a Book</a></span>
-	<span [hidden]="!loggedIn"><a md-button>Log out</a></span>
+	<span [hidden]="!loggedIn"><a md-button routerLink="/addNewBook">Add a Book</a></span>
+	<span [hidden]="!loggedIn"><a md-button (click)="logout()">Log out</a></span>
 </md-toolbar>

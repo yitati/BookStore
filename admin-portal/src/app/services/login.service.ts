@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoginService {
@@ -20,6 +20,30 @@ export class LoginService {
   	});
 
   	return this.http.get(url, {headers : headers});
+  }
+
+  // check if we already logged in
+  checkSession() {
+        // this is the backend server address
+    let url = "http://localhost:8181/checkSession";
+    
+    let headers = new Headers({
+      'x-auth-token' : localStorage.getItem('xAuthToken')
+    });
+
+    return this.http.get(url, {headers : headers});
+  }
+
+  logout() {
+        // this is the backend server address
+    let url = "http://localhost:8181/user/logout";
+    
+    let headers = new Headers({
+      'x-auth-token' : localStorage.getItem('xAuthToken')
+    });
+
+    // difference between the check session is we need to use post method here
+    return this.http.post(url, '', {headers : headers});
   }
 
 }
